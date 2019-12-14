@@ -6,28 +6,47 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import HomepageComponent from './Components/HomepageComponent';
+import KeyComponent from './Components/KeyComponent';
 
 class App extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      currPage: 'home'
+      showHome: true,
+      showKeys: false
     };
   }
 
+  homePage = () => {
+    this.setState({
+      showHome: true,
+      showKeys: false
+    })
+  }
+
+  keysAndScales = () => {
+    this.setState({
+      showHome: false,
+      showKeys: true
+    });
+  }
+
   render () {
+
+    
+
     return (
     <div className="App">
       {/* <NavbarComponent /> */}
       <div className="nav-custom">
           <Navbar bg="dark" expand="lg" variant="dark">
-          <Navbar.Brand href="#home">Arpy JS</Navbar.Brand>
+          <Navbar.Brand onClick={this.homePage}>Arpy JS</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="mr-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#link">Key and Scale</Nav.Link>
+              <Nav.Link onClick={this.homePage}>Home</Nav.Link>
+              <Nav.Link onClick={this.keysAndScales}>Keys and Scales</Nav.Link>
               <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                   <NavDropdown.Item href="#action/3.1">Options</NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.2">Save Session</NavDropdown.Item>
@@ -38,8 +57,13 @@ class App extends React.Component {
               </Nav>
           </Navbar.Collapse>
           </Navbar>
+          {this.state.showHome &&
+            <HomepageComponent />
+          }
+          {this.state.showKeys &&
+            <KeyComponent />
+          }
       </div>
-      <HomepageComponent />
     </div>
     );
   }
