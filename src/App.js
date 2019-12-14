@@ -6,7 +6,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import HomepageComponent from './Components/HomepageComponent';
-import KeyComponent from './Components/KeyComponent';
+import keyAndScaleComponent from './Components/keyAndScaleComponent';
 
 class App extends React.Component {
 
@@ -34,7 +34,7 @@ class App extends React.Component {
 
   render () {
 
-    
+
 
     return (
     <div className="App">
@@ -61,13 +61,13 @@ class App extends React.Component {
             <HomepageComponent />
           }
           {this.state.showKeys &&
-            <KeyComponent />
+            <keyAndScaleComponent />
           }
       </div>
     </div>
     );
   }
-    
+
 }
 
 export default App;
