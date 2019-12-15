@@ -6,7 +6,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import HomepageComponent from './Components/HomepageComponent';
-import keyAndScaleComponent from './Components/keyAndScaleComponent';
+import KeyAndScaleComponent from './Components/KeyAndScaleComponent';
 
 class App extends React.Component {
 
@@ -61,7 +61,7 @@ class App extends React.Component {
             <HomepageComponent />
           }
           {this.state.showKeys &&
-            <keyAndScaleComponent />
+            <KeyAndScaleComponent />
           }
       </div>
     </div>
