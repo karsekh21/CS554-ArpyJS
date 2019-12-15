@@ -1,20 +1,19 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import NavbarComponent  from './Components/navbarComponent';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import HomepageComponent from './Components/HomepageComponent';
-import KeyAndScaleComponent from './Components/KeyAndScaleComponent';
+import HomepageComponent from './Components/Homepage/HomepageComponent';
+import KeyComponent from './Components/KeyComponent';
 
 class App extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      showHome: true,
-      showKeys: false
+      showHome: false,
+      showKeys: true
     };
   }
 
@@ -34,19 +33,19 @@ class App extends React.Component {
 
   render () {
 
-
+    
 
     return (
     <div className="App">
       {/* <NavbarComponent /> */}
       <div className="nav-custom">
-          <Navbar bg="dark" expand="lg" variant="dark">
+          <Navbar bg="dark" expand="lg" variant="dark" sticky="top">
           <Navbar.Brand onClick={this.homePage}>Arpy JS</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="mr-auto">
               <Nav.Link onClick={this.homePage}>Home</Nav.Link>
-              <Nav.Link onClick={this.keysAndScales}>Keys and Scales</Nav.Link>
+              <Nav.Link onClick={this.keysAndScales}>Arpeggiator</Nav.Link>
               <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                   <NavDropdown.Item href="#action/3.1">Options</NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.2">Save Session</NavDropdown.Item>
@@ -61,13 +60,13 @@ class App extends React.Component {
             <HomepageComponent />
           }
           {this.state.showKeys &&
-            <KeyAndScaleComponent />
+            <KeyComponent />
           }
       </div>
     </div>
     );
   }
-
+    
 }
 
 export default App;

@@ -1,0 +1,28 @@
+.buttonGrid .btn {
+    width: 120px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttonGrid .btn-outline-light:focus {
+    box-shadow: none !important;
+}
+
+.buttonGrid {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    padding-bottom: 10px;
+    font-size: x-large;
+}
+
+hr {
+    border-top: 1px solid rgb(66, 66, 66) !important;
+    width: 100% !important;
+}

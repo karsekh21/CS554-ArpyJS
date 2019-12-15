@@ -1,0 +1,16 @@
+.homepage {
+    color: white;
+}
+
+.homepage .welcome {
+    font-size: xx-large;
+}
+
+.homepage .list .list-group {
+    /* background-color: black; */
+    color: lightcoral;
+}
+
+.homepage .list .list-group-item {
+    background-color: #363636;
+}
