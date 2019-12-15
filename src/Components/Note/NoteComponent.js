@@ -8,15 +8,7 @@ class NoteComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            note_length: ''
         }
-        this.noteLength = this.noteLength.bind(this);
-    }
-
-    noteLength(val) {
-        this.setState({
-            noteLength: val
-        });
     }
 
     render() {
@@ -24,7 +16,7 @@ class NoteComponent extends React.Component {
             <>
             <Container>
             <div className="title">Note Length: </div>
-            <ToggleButtonGroup type="radio" name="note" onChange={this.noteLength}>
+            <ToggleButtonGroup type="radio" name="note" onChange={this.props.noteLength}>
                 <ToggleButton variant="outline-light" value={"2n"}>1/2 note</ToggleButton>
                 <ToggleButton variant="outline-light" value={"4n"}>1/4 note</ToggleButton>
                 <ToggleButton variant="outline-light" value={"8n"}>1/8 note</ToggleButton>

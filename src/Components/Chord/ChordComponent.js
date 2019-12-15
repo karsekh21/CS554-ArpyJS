@@ -10,7 +10,6 @@ class ChordComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            chord_sequence: '',
             firstChord: '',
             secondChord: '',
             thirdChord: '',
@@ -74,9 +73,7 @@ class ChordComponent extends React.Component {
 
     finalString() {
         let final = this.state.firstChord + ' ' + this.state.secondChord + ' ' + this.state.thirdChord + ' ' + this.state.fourthChord + ' ' + this.state.fifthChord + ' ' + this.state.sixthChord + ' ' + this.state.seventhChord + ' ' + this.state.eighthChord;
-        this.setState({
-            chord_sequence: final
-        })
+        this.props.chordConcat(final);
     }
 
     render () {
@@ -176,7 +173,7 @@ class ChordComponent extends React.Component {
                 <br></br>
                 <br></br>
                 <div>
-                    {this.state.chord_sequence.length < 15 &&
+                    {this.props.chord_sequence.length < 15 &&
                     <div className="title"> Please make sure you have selected 8 chords! </div>
                     }
                 </div>
