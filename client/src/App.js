@@ -13,7 +13,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       showHome: false,
-      showKeys: true
+      showKeys: true,
+      data:null
     };
   }
 
@@ -31,10 +32,23 @@ class App extends React.Component {
     });
   }
 
+  componentDidMount(){
+    this.callBackendAPI()
+      .then(res => this.setState({ data: res.express }))
+      .catch(err => console.log(err));
+  }
+
+  callBackendAPI = async () => {
+    const res = await fetch('/express');
+    const body = await res.json();
+
+    if (res.status !== 200) {
+      throw Error(body.message)
+    }
+    return body;
+  };
+
   render () {
-
-    
-
     return (
     <div className="App">
       {/* <NavbarComponent /> */}
@@ -66,7 +80,7 @@ class App extends React.Component {
     </div>
     );
   }
-    
+
 }
 
 export default App;
