@@ -7,6 +7,9 @@ const fs = require("fs");
 const bluebird = require('bluebird');
 const redis = require('redis');
 const client = redis.createClient();
+const request = require('request');
+const scribble = require('scribbletune');
+
 bluebird.promisifyAll(redis.RedisClient.prototype);
 bluebird.promisifyAll(redis.Multi.prototype);
 const unlinkAsync = bluebird.promisify(fs.unlink);
@@ -35,6 +38,32 @@ let getCurrDate = function(){
   let year = date.getFullYear();
   return year + "-" + month + "-" + day;
 };
+router.post('/download_midi', (req, res) => {
+    let allINeed = req.body.content;
+    let name = req.body.file_name;
+    /*request({
+      url: 'http://localhost:5000/fileupload',
+      method: 'POST'},
+      (error, response, body) => {scribble.midi(allINeed, name);}
+    );*/
+    let url = 'http://localhost:5000/fileupload';
+    /*let formData = {
+      file : scribble.midi(allINeed,name)
+    };
+    request.post(url, {formData:formData*/
+
+      var req1 = request.post(url, function (err, resp, body) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log('URL: ' + body);
+    }
+  });
+  var form = req1.form();
+  form.append('temp_file', allINeed, {
+    filename: name
+  });
+});
 
 router.post("/fileupload", upload.single("temp_file"), async(req,res)=>{
   let file = req.file;
@@ -84,6 +113,10 @@ router.get("/files/:id", async(req,res) => {
   }else{
     res.status(404).json({error:"file not found"});
   }
+});
+
+router.get("/test", async(req, res)=>{
+  res.send({test:"woot"});
 });
 
 module.exports = router;

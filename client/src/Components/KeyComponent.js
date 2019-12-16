@@ -9,7 +9,6 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import scribble from 'scribbletune';
 
-import './key.css';
 import Container from 'react-bootstrap/Container';
 // import axios from 'axios';S
 
@@ -137,7 +136,7 @@ class KeyComponent extends React.Component {
 
         let nameString = this.textInput.current.value + ".mid";
 
-        // axios  
+        // axios
         //     .post('http://localhost:5000/download_midi', test)
         //     .then(() => {
         //         return(

@@ -71,7 +71,7 @@ class App extends React.Component {
           </Navbar.Collapse>
           </Navbar>
           {this.state.data === null &&
-            <div class="title"> ERR_CONN_NOT_FOUND </div>
+            <div className="title"> ERR_CONN_NOT_FOUND </div>
           }
           {this.state.showHome &&
             <HomepageComponent />
