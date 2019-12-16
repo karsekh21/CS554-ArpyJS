@@ -1,17 +1,14 @@
-const express = require('express');
-const request = require('request');
-const app = express();
+const express = require("express");
+let app = express();
+let configRoutes = require("./routes");
+const bodyParser = require("body-parser");const request = require('request');
 const scribble = require('scribbletune');
 const port = process.env.PORT || 5000;
 
-app.use(require("body-parser").json());
+app.use(bodyParser.json());
 
-// console.log that your server is up and running
-app.listen(port, () => console.log(`Listening on port ${port}`));
-
-// create a GET route
-app.get('/express_backend', (req, res) => {
-  res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' });
+app.get('/express', (req, res) => {
+  res.send({ express: 'Express backend is now connected to React app' });
 });
 
 app.use(function(req, res, next) {
@@ -29,8 +26,12 @@ app.post('/download_midi', (req, res) => {
         { url: 'http://localhost:5000/download_midi' },
         (error, response, body) => {
           scribble.midi(allINeed, name);
-          // console.log(allINeed);
         }
       )
+});
 
+configRoutes(app);
+
+app.listen(port,() => {
+    console.log(`Your routes will be running on ${port}`);
 });
