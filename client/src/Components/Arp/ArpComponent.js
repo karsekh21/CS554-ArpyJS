@@ -10,14 +10,58 @@ class ArpComponent extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            placeholder: ''
+        }
         this.textInput = React.createRef();
         this.arpOrderCreate = this.arpOrderCreate.bind(this);
+        this.showOrder = this.showOrder.bind(this);
     }
 
     arpOrderCreate() {
         let val = this.textInput.current.value;
         this.props.orderChange(val);
+
+        if (this.props.arp_length === 2) {
+            if (this.props.arp_order.length > 4 || this.props.arp_order.length === 0) {
+                this.setState({
+                    placeholder: 'Arp is improper length'
+                })
+            }
+            else {
+                this.setState ({
+                    placeholder: 'Arp is Set!'
+                })
+            }
+        }
+        else if (this.props.arp_length === 4) {
+            if (this.props.arp_order.length > 9 || this.props.arp_order.length === 0) {
+                this.setState({
+                    placeholder: 'Arp is improper length'
+                })
+            }
+            else {
+                this.setState ({
+                    placeholder: 'Arp is Set!'
+                })
+            }
+        }  
+        else if (this.props.arp_length === 8) {
+            if (this.props.arp_order.length > 21 || this.props.arp_order.length === 0) {
+                this.setState({
+                    placeholder: 'Arp is improper length'
+                })
+            }
+            else {
+                this.setState ({
+                    placeholder: 'Arp is Set!'
+                })
+            }
+        }       
+    }
+
+    showOrder() {
+        
     }
 
     render () {
@@ -42,7 +86,9 @@ class ArpComponent extends React.Component {
                 </InputGroup>
                 <div className="help-info">
                 This is what determines the length and note order !
-            </div>
+                </div>
+
+                <div>{this.state.placeholder}</div>
             </Container>
             <br></br>
             <hr></hr>

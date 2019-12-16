@@ -12,11 +12,28 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showHome: false,
-      showKeys: true,
-      data:null
+      showHome: true,
+      showKeys: false,
+      data: null
     };
   }
+
+  componentDidMount() {
+    // Call our fetch function below once the component mounts
+  this.callBackendAPI()
+    .then(res => this.setState({ data: res.express }))
+    .catch(err => console.log(err));
+  }
+
+  callBackendAPI = async () => {
+    const response = await fetch('/express_backend');
+    const body = await response.json();
+
+    if (response.status !== 200) {
+      throw Error(body.message) 
+    }
+    return body;
+  };
 
   homePage = () => {
     this.setState({
@@ -32,23 +49,10 @@ class App extends React.Component {
     });
   }
 
-  componentDidMount(){
-    this.callBackendAPI()
-      .then(res => this.setState({ data: res.express }))
-      .catch(err => console.log(err));
-  }
-
-  callBackendAPI = async () => {
-    const res = await fetch('/express');
-    const body = await res.json();
-
-    if (res.status !== 200) {
-      throw Error(body.message)
-    }
-    return body;
-  };
-
   render () {
+
+    
+
     return (
     <div className="App">
       {/* <NavbarComponent /> */}
@@ -70,6 +74,9 @@ class App extends React.Component {
               </Nav>
           </Navbar.Collapse>
           </Navbar>
+          {this.state.data === null &&
+            <div class="title"> ERR_CONN_NOT_FOUND </div>           
+          }
           {this.state.showHome &&
             <HomepageComponent />
           }
@@ -80,7 +87,7 @@ class App extends React.Component {
     </div>
     );
   }
-
+    
 }
 
 export default App;

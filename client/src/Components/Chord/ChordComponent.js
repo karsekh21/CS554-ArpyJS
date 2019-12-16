@@ -77,10 +77,9 @@ class ChordComponent extends React.Component {
     }
 
     render () {
-
-        return (
-
-            <>
+        if (this.props.scale === 'major') {
+            return (
+                <>
             <Container>
                 <div className="title">Chord Sequence: </div>
                 <div> Pick one in each column, then click Set! </div>
@@ -181,7 +180,533 @@ class ChordComponent extends React.Component {
                 <hr></hr>
             </Container>
             </>
-        )
+            )
+        }
+        else if (this.props.scale === 'minor') {
+            return (
+                <>
+            <Container>
+                <div className="title">Chord Sequence: </div>
+                <div> Pick one in each column, then click Set! </div>
+                <br></br>
+                <div className="flex">
+                <div className="firstColumn">
+                <ToggleButtonGroup type="radio" name="chord" onChange={this.changeOne} vertical>
+                    <ToggleButton variant="outline-light" value={"i"}>i</ToggleButton>
+                    <ToggleButton variant="outline-light" value={"ii°"}>ii°</ToggleButton>
+                    <ToggleButton variant="outline-light" value={"III"}>III</ToggleButton>
+                    <ToggleButton variant="outline-light" value={"iv"}>iv</ToggleButton>
+                    <ToggleButton variant="outline-light" value={"v"}>v</ToggleButton>
+                    <ToggleButton variant="outline-light" value={"VI"}>VI</ToggleButton>
+                </ToggleButtonGroup>
+                </div>
+                <div className="secondColumn">
+                <ToggleButtonGroup type="radio" name="chord2" onChange={this.changeTwo} vertical>
+                <ToggleButton variant="outline-light" value={"i"}>i</ToggleButton>
+                    <ToggleButton variant="outline-light" value={"ii°"}>ii°</ToggleButton>
+                    <ToggleButton variant="outline-light" value={"III"}>III</ToggleButton>
+                    <ToggleButton variant="outline-light" value={"iv"}>iv</ToggleButton>
+                    <ToggleButton variant="outline-light" value={"v"}>v</ToggleButton>
+                    <ToggleButton variant="outline-light" value={"VI"}>VI</ToggleButton>
+                </ToggleButtonGroup>
+                </div>
+                <div className="thirdColumn">
+                <ToggleButtonGroup type="radio" name="chord3" onChange={this.changeThree} vertical>
+                <ToggleButton variant="outline-light" value={"i"}>i</ToggleButton>
+                    <ToggleButton variant="outline-light" value={"ii°"}>ii°</ToggleButton>
+                    <ToggleButton variant="outline-light" value={"III"}>III</ToggleButton>
+                    <ToggleButton variant="outline-light" value={"iv"}>iv</ToggleButton>
+                    <ToggleButton variant="outline-light" value={"v"}>v</ToggleButton>
+                    <ToggleButton variant="outline-light" value={"VI"}>VI</ToggleButton>
+                </ToggleButtonGroup>
+                </div>
+                <div className="fourthColumn">
+                <ToggleButtonGroup type="radio" name="chord4" onChange={this.changeFour} vertical>
+                <ToggleButton variant="outline-light" value={"i"}>i</ToggleButton>
+                    <ToggleButton variant="outline-light" value={"ii°"}>ii°</ToggleButton>
+                    <ToggleButton variant="outline-light" value={"III"}>III</ToggleButton>
+                    <ToggleButton variant="outline-light" value={"iv"}>iv</ToggleButton>
+                    <ToggleButton variant="outline-light" value={"v"}>v</ToggleButton>
+                    <ToggleButton variant="outline-light" value={"VI"}>VI</ToggleButton>
+                </ToggleButtonGroup>
+                </div>
+                <div className="fifthColumn">
+                <ToggleButtonGroup type="radio" name="chord5" onChange={this.changeFive} vertical>
+                <ToggleButton variant="outline-light" value={"i"}>i</ToggleButton>
+                    <ToggleButton variant="outline-light" value={"ii°"}>ii°</ToggleButton>
+                    <ToggleButton variant="outline-light" value={"III"}>III</ToggleButton>
+                    <ToggleButton variant="outline-light" value={"iv"}>iv</ToggleButton>
+                    <ToggleButton variant="outline-light" value={"v"}>v</ToggleButton>
+                    <ToggleButton variant="outline-light" value={"VI"}>VI</ToggleButton>
+                </ToggleButtonGroup>
+                </div>
+                <div className="sixthColumn">
+                <ToggleButtonGroup type="radio" name="chord6" onChange={this.changeSix} vertical>
+                <ToggleButton variant="outline-light" value={"i"}>i</ToggleButton>
+                    <ToggleButton variant="outline-light" value={"ii°"}>ii°</ToggleButton>
+                    <ToggleButton variant="outline-light" value={"III"}>III</ToggleButton>
+                    <ToggleButton variant="outline-light" value={"iv"}>iv</ToggleButton>
+                    <ToggleButton variant="outline-light" value={"v"}>v</ToggleButton>
+                    <ToggleButton variant="outline-light" value={"VI"}>VI</ToggleButton>
+                </ToggleButtonGroup>
+                </div>
+                <div className="seventhColumn">
+                <ToggleButtonGroup type="radio" name="chord7" onChange={this.changeSeven} vertical>
+                <ToggleButton variant="outline-light" value={"i"}>i</ToggleButton>
+                    <ToggleButton variant="outline-light" value={"ii°"}>ii°</ToggleButton>
+                    <ToggleButton variant="outline-light" value={"III"}>III</ToggleButton>
+                    <ToggleButton variant="outline-light" value={"iv"}>iv</ToggleButton>
+                    <ToggleButton variant="outline-light" value={"v"}>v</ToggleButton>
+                    <ToggleButton variant="outline-light" value={"VI"}>VI</ToggleButton>
+                </ToggleButtonGroup>
+                </div>
+                <div className="eighthColumn">
+                <ToggleButtonGroup type="radio" name="chord8" onChange={this.changeEight} vertical>
+                <ToggleButton variant="outline-light" value={"i"}>i</ToggleButton>
+                    <ToggleButton variant="outline-light" value={"ii°"}>ii°</ToggleButton>
+                    <ToggleButton variant="outline-light" value={"III"}>III</ToggleButton>
+                    <ToggleButton variant="outline-light" value={"iv"}>iv</ToggleButton>
+                    <ToggleButton variant="outline-light" value={"v"}>v</ToggleButton>
+                    <ToggleButton variant="outline-light" value={"VI"}>VI</ToggleButton>
+                </ToggleButtonGroup>
+                </div>
+                </div>
+                <br></br>
+                <br></br>
+                <Button variant='outline-warning' onClick={this.finalString}> Set </Button>
+                <br></br>
+                <br></br>
+                <div>
+                    {this.props.chord_sequence.length < 15 &&
+                    <div className="title"> Please make sure you have selected 8 chords! </div>
+                    }
+                </div>
+                <br></br>
+                <hr></hr>
+            </Container>
+            </>
+            )
+        }
+        else if (this.props.scale === 'dorian') {
+            return (
+                <>
+                <Container>
+                    <div className="title">Chord Sequence: </div>
+                    <div> Pick one in each column, then click Set! </div>
+                    <br></br>
+                    <div className="flex">
+                    <div className="firstColumn">
+                    <ToggleButtonGroup type="radio" name="chord" onChange={this.changeOne} vertical>
+                        <ToggleButton variant="outline-light" value={"i"}>i</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"ii"}>ii</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"III"}>III</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"IV"}>IV</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"v"}>v</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"vi°"}>vi°</ToggleButton>
+                    </ToggleButtonGroup>
+                    </div>
+                    <div className="secondColumn">
+                    <ToggleButtonGroup type="radio" name="chord2" onChange={this.changeTwo} vertical>
+                    <ToggleButton variant="outline-light" value={"i"}>i</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"ii"}>ii</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"III"}>III</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"IV"}>IV</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"v"}>v</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"vi°"}>vi°</ToggleButton>
+                    </ToggleButtonGroup>
+                    </div>
+                    <div className="thirdColumn">
+                    <ToggleButtonGroup type="radio" name="chord3" onChange={this.changeThree} vertical>
+                    <ToggleButton variant="outline-light" value={"i"}>i</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"ii"}>ii</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"III"}>III</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"IV"}>IV</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"v"}>v</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"vi°"}>vi°</ToggleButton>
+                    </ToggleButtonGroup>
+                    </div>
+                    <div className="fourthColumn">
+                    <ToggleButtonGroup type="radio" name="chord4" onChange={this.changeFour} vertical>
+                    <ToggleButton variant="outline-light" value={"i"}>i</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"ii"}>ii</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"III"}>III</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"IV"}>IV</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"v"}>v</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"vi°"}>vi°</ToggleButton>
+                    </ToggleButtonGroup>
+                    </div>
+                    <div className="fifthColumn">
+                    <ToggleButtonGroup type="radio" name="chord5" onChange={this.changeFive} vertical>
+                    <ToggleButton variant="outline-light" value={"i"}>i</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"ii"}>ii</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"III"}>III</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"IV"}>IV</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"v"}>v</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"vi°"}>vi°</ToggleButton>
+                    </ToggleButtonGroup>
+                    </div>
+                    <div className="sixthColumn">
+                    <ToggleButtonGroup type="radio" name="chord6" onChange={this.changeSix} vertical>
+                    <ToggleButton variant="outline-light" value={"i"}>i</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"ii"}>ii</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"III"}>III</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"IV"}>IV</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"v"}>v</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"vi°"}>vi°</ToggleButton>
+                    </ToggleButtonGroup>
+                    </div>
+                    <div className="seventhColumn">
+                    <ToggleButtonGroup type="radio" name="chord7" onChange={this.changeSeven} vertical>
+                    <ToggleButton variant="outline-light" value={"i"}>i</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"ii"}>ii</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"III"}>III</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"IV"}>IV</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"v"}>v</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"vi°"}>vi°</ToggleButton>
+                    </ToggleButtonGroup>
+                    </div>
+                    <div className="eighthColumn">
+                    <ToggleButtonGroup type="radio" name="chord8" onChange={this.changeEight} vertical>
+                    <ToggleButton variant="outline-light" value={"i"}>i</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"ii"}>ii</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"III"}>III</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"IV"}>IV</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"v"}>v</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"vi°"}>vi°</ToggleButton>
+                    </ToggleButtonGroup>
+                    </div>
+                    </div>
+                    <br></br>
+                    <br></br>
+                    <Button variant='outline-warning' onClick={this.finalString}> Set </Button>
+                    <br></br>
+                    <br></br>
+                    <div>
+                        {this.props.chord_sequence.length < 15 &&
+                        <div className="title"> Please make sure you have selected 8 chords! </div>
+                        }
+                    </div>
+                    <br></br>
+                    <hr></hr>
+                </Container>
+                </>
+            )
+        }
+        else if (this.props.scale === 'melodic') {
+            return (
+                <>
+                <Container>
+                    <div className="title">Chord Sequence: </div>
+                    <div> Pick one in each column, then click Set! </div>
+                    <br></br>
+                    <div className="flex">
+                    <div className="firstColumn">
+                    <ToggleButtonGroup type="radio" name="chord" onChange={this.changeOne} vertical>
+                        <ToggleButton variant="outline-light" value={"i"}>i</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"ii"}>ii</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"III+"}>III+</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"IV"}>IV</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"V"}>V</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"vi°"}>vi°</ToggleButton>
+                    </ToggleButtonGroup>
+                    </div>
+                    <div className="secondColumn">
+                    <ToggleButtonGroup type="radio" name="chord2" onChange={this.changeTwo} vertical>
+                    <ToggleButton variant="outline-light" value={"i"}>i</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"ii"}>ii</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"III+"}>III+</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"IV"}>IV</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"V"}>V</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"vi°"}>vi°</ToggleButton>
+                    </ToggleButtonGroup>
+                    </div>
+                    <div className="thirdColumn">
+                    <ToggleButtonGroup type="radio" name="chord3" onChange={this.changeThree} vertical>
+                    <ToggleButton variant="outline-light" value={"i"}>i</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"ii"}>ii</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"III+"}>III+</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"IV"}>IV</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"V"}>V</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"vi°"}>vi°</ToggleButton>
+                    </ToggleButtonGroup>
+                    </div>
+                    <div className="fourthColumn">
+                    <ToggleButtonGroup type="radio" name="chord4" onChange={this.changeFour} vertical>
+                    <ToggleButton variant="outline-light" value={"i"}>i</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"ii"}>ii</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"III+"}>III+</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"IV"}>IV</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"V"}>V</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"vi°"}>vi°</ToggleButton>
+                    </ToggleButtonGroup>
+                    </div>
+                    <div className="fifthColumn">
+                    <ToggleButtonGroup type="radio" name="chord5" onChange={this.changeFive} vertical>
+                    <ToggleButton variant="outline-light" value={"i"}>i</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"ii"}>ii</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"III+"}>III+</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"IV"}>IV</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"V"}>V</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"vi°"}>vi°</ToggleButton>
+                    </ToggleButtonGroup>
+                    </div>
+                    <div className="sixthColumn">
+                    <ToggleButtonGroup type="radio" name="chord6" onChange={this.changeSix} vertical>
+                    <ToggleButton variant="outline-light" value={"i"}>i</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"ii"}>ii</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"III+"}>III+</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"IV"}>IV</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"V"}>V</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"vi°"}>vi°</ToggleButton>
+                    </ToggleButtonGroup>
+                    </div>
+                    <div className="seventhColumn">
+                    <ToggleButtonGroup type="radio" name="chord7" onChange={this.changeSeven} vertical>
+                    <ToggleButton variant="outline-light" value={"i"}>i</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"ii"}>ii</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"III+"}>III+</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"IV"}>IV</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"V"}>V</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"vi°"}>vi°</ToggleButton>
+                    </ToggleButtonGroup>
+                    </div>
+                    <div className="eighthColumn">
+                    <ToggleButtonGroup type="radio" name="chord8" onChange={this.changeEight} vertical>
+                    <ToggleButton variant="outline-light" value={"i"}>i</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"ii"}>ii</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"III+"}>III+</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"IV"}>IV</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"V"}>V</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"vi°"}>vi°</ToggleButton>
+                    </ToggleButtonGroup>
+                    </div>
+                    </div>
+                    <br></br>
+                    <br></br>
+                    <Button variant='outline-warning' onClick={this.finalString}> Set </Button>
+                    <br></br>
+                    <br></br>
+                    <div>
+                        {this.props.chord_sequence.length < 15 &&
+                        <div className="title"> Please make sure you have selected 8 chords! </div>
+                        }
+                    </div>
+                    <br></br>
+                    <hr></hr>
+                </Container>
+                </>   
+            )
+        }
+        else if (this.props.scale === 'harmonic') {
+            return (
+                <>
+                <Container>
+                    <div className="title">Chord Sequence: </div>
+                    <div> Pick one in each column, then click Set! </div>
+                    <br></br>
+                    <div className="flex">
+                    <div className="firstColumn">
+                    <ToggleButtonGroup type="radio" name="chord" onChange={this.changeOne} vertical>
+                        <ToggleButton variant="outline-light" value={"i"}>i</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"ii°"}>ii°</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"III+"}>III+</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"IV"}>IV</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"V"}>V</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"VI"}>VI</ToggleButton>
+                    </ToggleButtonGroup>
+                    </div>
+                    <div className="secondColumn">
+                    <ToggleButtonGroup type="radio" name="chord2" onChange={this.changeTwo} vertical>
+                    <ToggleButton variant="outline-light" value={"i"}>i</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"ii°"}>ii°</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"III+"}>III+</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"IV"}>IV</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"V"}>V</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"VI"}>VI</ToggleButton>
+                    </ToggleButtonGroup>
+                    </div>
+                    <div className="thirdColumn">
+                    <ToggleButtonGroup type="radio" name="chord3" onChange={this.changeThree} vertical>
+                    <ToggleButton variant="outline-light" value={"i"}>i</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"ii°"}>ii°</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"III+"}>III+</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"IV"}>IV</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"V"}>V</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"VI"}>VI</ToggleButton>
+                    </ToggleButtonGroup>
+                    </div>
+                    <div className="fourthColumn">
+                    <ToggleButtonGroup type="radio" name="chord4" onChange={this.changeFour} vertical>
+                    <ToggleButton variant="outline-light" value={"i"}>i</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"ii°"}>ii°</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"III+"}>III+</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"IV"}>IV</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"V"}>V</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"VI"}>VI</ToggleButton>
+                    </ToggleButtonGroup>
+                    </div>
+                    <div className="fifthColumn">
+                    <ToggleButtonGroup type="radio" name="chord5" onChange={this.changeFive} vertical>
+                    <ToggleButton variant="outline-light" value={"i"}>i</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"ii°"}>ii°</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"III+"}>III+</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"IV"}>IV</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"V"}>V</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"VI"}>VI</ToggleButton>
+                    </ToggleButtonGroup>
+                    </div>
+                    <div className="sixthColumn">
+                    <ToggleButtonGroup type="radio" name="chord6" onChange={this.changeSix} vertical>
+                    <ToggleButton variant="outline-light" value={"i"}>i</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"ii°"}>ii°</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"III+"}>III+</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"IV"}>IV</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"V"}>V</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"VI"}>VI</ToggleButton>
+                    </ToggleButtonGroup>
+                    </div>
+                    <div className="seventhColumn">
+                    <ToggleButtonGroup type="radio" name="chord7" onChange={this.changeSeven} vertical>
+                    <ToggleButton variant="outline-light" value={"i"}>i</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"ii°"}>ii°</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"III+"}>III+</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"IV"}>IV</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"V"}>V</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"VI"}>VI</ToggleButton>
+                    </ToggleButtonGroup>
+                    </div>
+                    <div className="eighthColumn">
+                    <ToggleButtonGroup type="radio" name="chord8" onChange={this.changeEight} vertical>
+                    <ToggleButton variant="outline-light" value={"i"}>i</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"ii°"}>ii°</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"III+"}>III+</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"IV"}>IV</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"V"}>V</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"VI"}>VI</ToggleButton>
+                    </ToggleButtonGroup>
+                    </div>
+                    </div>
+                    <br></br>
+                    <br></br>
+                    <Button variant='outline-warning' onClick={this.finalString}> Set </Button>
+                    <br></br>
+                    <br></br>
+                    <div>
+                        {this.props.chord_sequence.length < 15 &&
+                        <div className="title"> Please make sure you have selected 8 chords! </div>
+                        }
+                    </div>
+                    <br></br>
+                    <hr></hr>
+                </Container>
+                </>   
+            )
+        }
+        else {
+            return (
+                <>
+                <Container>
+                    <div className="title">Chord Sequence: </div>
+                    <div> Pick one in each column, then click Set! </div>
+                    <br></br>
+                    <div className="flex">
+                    <div className="firstColumn">
+                    <ToggleButtonGroup type="radio" name="chord" onChange={this.changeOne} vertical>
+                        <ToggleButton variant="outline-light" value={"I"}>I</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"ii"}>ii</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"iii"}>iii</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"IV"}>IV</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"V"}>V</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"vi"}>vi</ToggleButton>
+                    </ToggleButtonGroup>
+                    </div>
+                    <div className="secondColumn">
+                    <ToggleButtonGroup type="radio" name="chord2" onChange={this.changeTwo} vertical>
+                        <ToggleButton variant="outline-light" value={"I"}>I</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"ii"}>ii</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"iii"}>iii</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"IV"}>IV</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"V"}>V</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"vi"}>vi</ToggleButton>
+                    </ToggleButtonGroup>
+                    </div>
+                    <div className="thirdColumn">
+                    <ToggleButtonGroup type="radio" name="chord3" onChange={this.changeThree} vertical>
+                        <ToggleButton variant="outline-light" value={"I"}>I</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"ii"}>ii</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"iii"}>iii</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"IV"}>IV</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"V"}>V</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"vi"}>vi</ToggleButton>
+                    </ToggleButtonGroup>
+                    </div>
+                    <div className="fourthColumn">
+                    <ToggleButtonGroup type="radio" name="chord4" onChange={this.changeFour} vertical>
+                        <ToggleButton variant="outline-light" value={"I"}>I</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"ii"}>ii</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"iii"}>iii</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"IV"}>IV</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"V"}>V</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"vi"}>vi</ToggleButton>
+                    </ToggleButtonGroup>
+                    </div>
+                    <div className="fifthColumn">
+                    <ToggleButtonGroup type="radio" name="chord5" onChange={this.changeFive} vertical>
+                        <ToggleButton variant="outline-light" value={"I"}>I</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"ii"}>ii</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"iii"}>iii</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"IV"}>IV</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"V"}>V</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"vi"}>vi</ToggleButton>
+                    </ToggleButtonGroup>
+                    </div>
+                    <div className="sixthColumn">
+                    <ToggleButtonGroup type="radio" name="chord6" onChange={this.changeSix} vertical>
+                        <ToggleButton variant="outline-light" value={"I"}>I</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"ii"}>ii</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"iii"}>iii</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"IV"}>IV</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"V"}>V</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"vi"}>vi</ToggleButton>
+                    </ToggleButtonGroup>
+                    </div>
+                    <div className="seventhColumn">
+                    <ToggleButtonGroup type="radio" name="chord7" onChange={this.changeSeven} vertical>
+                        <ToggleButton variant="outline-light" value={"I"}>I</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"ii"}>ii</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"iii"}>iii</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"IV"}>IV</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"V"}>V</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"vi"}>vi</ToggleButton>
+                    </ToggleButtonGroup>
+                    </div>
+                    <div className="eighthColumn">
+                    <ToggleButtonGroup type="radio" name="chord8" onChange={this.changeEight} vertical>
+                        <ToggleButton variant="outline-light" value={"I"}>I</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"ii"}>ii</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"iii"}>iii</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"IV"}>IV</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"V"}>V</ToggleButton>
+                        <ToggleButton variant="outline-light" value={"vi"}>vi</ToggleButton>
+                    </ToggleButtonGroup>
+                    </div>
+                    </div>
+                    <br></br>
+                    <br></br>
+                    <Button variant='outline-warning' onClick={this.finalString}> Set </Button>
+                    <br></br>
+                    <br></br>
+                    <div>
+                        {this.props.chord_sequence.length < 15 &&
+                        <div className="title"> Please make sure you have selected 8 chords! </div>
+                        }
+                    </div>
+                    <br></br>
+                    <hr></hr>
+                </Container>
+                </>
+            )
+        }
     }
 
 }
