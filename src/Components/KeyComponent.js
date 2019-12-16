@@ -5,8 +5,8 @@ import NoteComponent from './Note/NoteComponent';
 import ChordComponent from './Chord/ChordComponent';
 import PatternComponent from './Pattern/PatternComponent';
 import Button from 'react-bootstrap/Button';
+// import scribble from 'scribbletune';
 
-const scribble =  require('scribbletune');
 
 class KeyComponent extends React.Component {
 
@@ -23,6 +23,7 @@ class KeyComponent extends React.Component {
             bpm: '',
             fileName: '',
             inputPlaceholder: ''
+            // blobURL_MIDI: ''
         };
         this.keyChange = this.keyChange.bind(this);
         this.scaleChange = this.scaleChange.bind(this);
@@ -32,7 +33,7 @@ class KeyComponent extends React.Component {
         this.chordConcat = this.chordConcat.bind(this);
         this.patternChange = this.patternChange.bind(this);
         this.bpmChange = this.bpmChange.bind(this);
-        this.compileItAll = this.compileItAll.bind(this);
+        // this.compileItAll = this.compileItAll.bind(this);
     }
 
     keyChange(val) {
@@ -69,9 +70,9 @@ class KeyComponent extends React.Component {
         }
     }
 
-    orderChange() {
+    orderChange(val) {
         this.setState({
-            arp_order: this.textInput.current.value
+            arp_order: val
         });
     }
 
@@ -99,36 +100,39 @@ class KeyComponent extends React.Component {
         });
     }
 
-    compileItAll() {
-        if (this.state.scale === 'melodic') {
-            this.setState({
-                scale: 'melodic minor'
-            })
-        }
-        else if (this.state.scale === 'harmonic') {
-            this.setState({
-                scale: 'harmonic minor'
-            })
-        }
+    // compileItAll() {
+    //     if (this.state.scale === 'melodic') {
+    //         this.setState({
+    //             scale: 'melodic minor'
+    //         })
+    //     }
+    //     else if (this.state.scale === 'harmonic') {
+    //         this.setState({
+    //             scale: 'harmonic minor'
+    //         })
+    //     }
 
-        let keyInfo = this.state.key + ' ' + this.state.scale;
+    //     let keyInfo = this.state.key + ' ' + this.state.scale;
 
-        let theChords = scribble.getChordsByProgression(keyInfo, this.state.chord_sequence);
+    //     let theChords = scribble.getChordsByProgression(keyInfo, this.state.chord_sequence);
 
-        let notesArr = scribble.arp({
-            chords: theChords,
-            count: this.state.arp_length,
-            order: this.state.arp_order
-        });
+    //     let notesArr = scribble.arp({
+    //         chords: theChords,
+    //         count: this.state.arp_length,
+    //         order: this.state.arp_order
+    //     });
 
-        let c = scribble.clip({
-            notes: notesArr,
-            pattern: this.state.pattern_sequence.repeat(notesArr.length/2),
-            subdiv: this.state.noteLength
-        })
+    //     let c = scribble.clip({
+    //         notes: notesArr,
+    //         pattern: this.state.pattern_sequence.repeat(notesArr.length/2),
+    //         subdiv: this.state.noteLength
+    //     })
 
-        scribble.midi(c, 'default.mid');
-    }
+    //     scribble.midi(c, null, function (err, bytes) {
+    //         const b64 = btoa(bytes);
+    //         const uri = 'data:audio/midi;base64,' + b64;
+    //       });
+    // }
 
     render () {
         return (

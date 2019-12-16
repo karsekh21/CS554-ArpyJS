@@ -12,6 +12,12 @@ class ArpComponent extends React.Component {
         super(props);
         this.state = {}
         this.textInput = React.createRef();
+        this.arpOrderCreate = this.arpOrderCreate.bind(this);
+    }
+
+    arpOrderCreate() {
+        let val = this.textInput.current.value;
+        this.props.orderChange(val);
     }
 
     render () {
@@ -30,7 +36,7 @@ class ArpComponent extends React.Component {
                 <div className="title">Arp Order:</div>
                 <InputGroup className="mb-3">
                     <InputGroup.Prepend>
-                    <Button variant="outline-light" type="submit" onClick={this.props.orderChange}>Set</Button>
+                    <Button variant="outline-light" type="submit" onClick={this.arpOrderCreate}>Set</Button>
                     </InputGroup.Prepend>
                     <FormControl aria-describedby="basic-addon1" placeholder={this.props.inputPlaceholder} ref={this.textInput} type="text"/>
                 </InputGroup>
