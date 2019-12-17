@@ -17,7 +17,7 @@ class App extends React.Component {
       data: null,
       fileNames: null
     };
-    this.handleClick = this.handleClick.bind(this);
+    this.handleSelect= this.handleSelect.bind(this);
   }
 
   componentDidMount(){
@@ -64,16 +64,16 @@ class App extends React.Component {
     });
   }
 
-  handleClick(val) {
-    fetch('http://localhost:5000/file/:' + val)
+  handleSelect = eventKey => {
+    fetch('http://localhost:5000/files/' + eventKey);
   }
 
   render () {
       let dropdown;
       
       if (this.state.fileNames != null) {
-        dropdown = <NavDropdown title="Uploaded Files" id="basic-nav-dropdown">
-                      {this.state.fileNames.map(file => <NavDropdown.Item value={file._id} onClick={this.handleClick}>{file.originalname}</NavDropdown.Item>)}
+        dropdown = <NavDropdown title="Uploaded Files" id="basic-nav-dropdown" onSelect={this.handleClick}>
+                      {this.state.fileNames.map(file => <NavDropdown.Item eventKey={file._id}>{file.originalname}</NavDropdown.Item>)}
                     </NavDropdown>
       }
       else {
