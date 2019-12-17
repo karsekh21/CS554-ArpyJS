@@ -7,6 +7,11 @@ const fs = require("fs");
 const bluebird = require('bluebird');
 const redis = require('redis');
 const client = redis.createClient();
+const request = require('request');
+const scribble = require('scribbletune');
+
+const doAsync = require('doasync');
+
 bluebird.promisifyAll(redis.RedisClient.prototype);
 bluebird.promisifyAll(redis.Multi.prototype);
 const unlinkAsync = bluebird.promisify(fs.unlink);
@@ -20,7 +25,7 @@ var Storage = multer.diskStorage({
   },
   filename: function(req, file, callback) {
     //Date for unique filenames
-    callback(null, file.fieldname + "_" + Date.now() + "_" + file.originalname);
+    callback(null, Date.now() + "_" + file.originalname);
   }
 });
 
@@ -35,6 +40,28 @@ let getCurrDate = function(){
   let year = date.getFullYear();
   return year + "-" + month + "-" + day;
 };
+
+
+router.post('/download_midi', (req, res) => {
+  let allINeed = req.body.content;
+  let name = req.body.file_name;
+  scribble.midi(allINeed, name);
+
+  const options = {
+    method: "POST",
+    url: 'http://localhost:5000/fileupload' ,
+    headers: {
+        "Content-Type": "multipart/form-data"
+    },
+    formData : {
+        "temp_file" : fs.createReadStream(name)
+    }
+  };
+
+  request(options, function (err, res, body) {
+    if(err) console.log(err);
+  });
+});
 
 router.post("/fileupload", upload.single("temp_file"), async(req,res)=>{
   let file = req.file;
@@ -54,10 +81,11 @@ router.post("/fileupload", upload.single("temp_file"), async(req,res)=>{
     let oldpath = "tmp/" + oldfile.filename;
     unlinkAsync(oldpath);
   }
+  unlinkAsync(file.originalname);
   file_hist.unshift(id);
 
-  res.end("Done.");
 });
+
 
 router.get("/files", async(req,res) => {
     var files = [];
@@ -75,11 +103,6 @@ router.get("/files/:id", async(req,res) => {
   if(cache){
     file_hist.unshift(id);
     let fpath = __dirname + '/../tmp/' + JSON.parse(cache).filename;
-    /* renaming file with res.download to original filename doesn't work,
-    let newfn = JSON.parse(cache).originalname;
-    res.download(path.resolve(fpath),newfn);
-    Solution: use sendFile and keep filename
-    */
     res.sendFile(path.resolve(fpath));
   }else{
     res.status(404).json({error:"file not found"});

@@ -8,16 +8,16 @@ function HomepageComponent() {
         <div className="homepage">
             <br></br>
             <Container>
-                <div class="welcome">
+                <div className="welcome">
                     Welcome to Arpy JS!
                 </div>
                 <br></br>
-                <div class="basic-info">
+                <div className="basic-info">
                     Here are the basic steps you need to know!
                 </div>
                 <br></br>
                 <Container>
-                    <div class="list">
+                    <div className="list">
                     <ListGroup >
                         <ListGroup.Item >Select a Key and Scale type</ListGroup.Item>
                         <ListGroup.Item >Choose the Arp length (2, 4 or 8 bars)</ListGroup.Item>
