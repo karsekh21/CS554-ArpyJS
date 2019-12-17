@@ -94,7 +94,7 @@ router.get("/files", async(req,res) => {
       let f = await client.getAsync(file_hist[i]);
       files.push(JSON.parse(f));
     }
-    res.send(files);
+    res.send({ express: files });
 });
 
 router.get("/files/:id", async(req,res) => {
