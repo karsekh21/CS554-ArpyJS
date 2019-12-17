@@ -94,14 +94,21 @@ router.get("/files", async(req,res) => {
       let f = await client.getAsync(file_hist[i]);
       files.push(JSON.parse(f));
     }
-    res.send(files);
+<<<<<<< HEAD
+<<<<<<< HEAD
+    res.send({express:files});
+=======
+    res.send({ express: files });
+>>>>>>> ceac18238fcea9a0f0800d0a25d97484e082e900
+=======
+    res.send({ express: files });
+>>>>>>> ceac18238fcea9a0f0800d0a25d97484e082e900
 });
 
 router.get("/files/:id", async(req,res) => {
   let id = req.params.id;
   let cache = await client.getAsync(id);
   if(cache){
-    file_hist.unshift(id);
     let fpath = __dirname + '/../tmp/' + JSON.parse(cache).filename;
     res.sendFile(path.resolve(fpath));
   }else{

@@ -17,14 +17,14 @@ class App extends React.Component {
       data: null,
       fileNames: null
     };
-    this.handleClick = this.handleClick.bind(this);
+    this.handleSelect= this.handleSelect.bind(this);
   }
 
   componentDidMount(){
     this.callBackendAPI()
       .then(res => this.setState({ data: res.express }))
       .catch(err => console.log(err));
-    
+
     this.callBackendAPI2()
       .then(res => this.setState({ fileNames: res.express }))
   }
@@ -42,7 +42,6 @@ class App extends React.Component {
   callBackendAPI2 = async () => {
     const res = await fetch('http://localhost:5000/files');
     const body = await res.json();
-
     if (res.status !== 200) {
       throw Error(body.message)
     }
@@ -64,23 +63,32 @@ class App extends React.Component {
     });
   }
 
-  handleClick(val) {
-    fetch('http://localhost:5000/file/:' + val)
+  handleClick = async(val,name) =>{
+    await fetch('http://localhost:5000/files/' + val).then(response => {
+				response.blob().then(blob => {
+					let url = window.URL.createObjectURL(blob);
+					let a = document.createElement('a');
+					a.href = url;
+					a.download=this.name;
+					a.click();
+				});
+				//window.location.href = response.url;
+		});;
   }
 
   render () {
       let dropdown;
-      
+
       if (this.state.fileNames != null) {
-        dropdown = <NavDropdown title="Uploaded Files" id="basic-nav-dropdown">
-                      {this.state.fileNames.map(file => <NavDropdown.Item value={file._id} onClick={this.handleClick}>{file.originalname}</NavDropdown.Item>)}
+        dropdown = <NavDropdown title="Uploaded Files" id="basic-nav-dropdown" onSelect={this.handleClick}>
+                      {this.state.fileNames.map(file => <NavDropdown.Item eventKey={file._id}>{file.originalname}</NavDropdown.Item>)}
                     </NavDropdown>
       }
       else {
         dropdown = <div> no recent files </div>
       }
 
-      
+
 
     return (
     <div className="App">
