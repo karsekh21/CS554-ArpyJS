@@ -5,7 +5,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
-
+import './arp.css';
 class ArpComponent extends React.Component {
 
     constructor(props) {
@@ -69,11 +69,13 @@ class ArpComponent extends React.Component {
             <>
             <Container>
                 <div className="title">Arp Length: </div>
+                <div className='arp'>
                 <ToggleButtonGroup type="radio" name="bar-length" onChange={this.props.lengthChange}>
                     <ToggleButton variant="outline-light" value={2}>2 bars</ToggleButton>
                     <ToggleButton variant="outline-light" value={4}>4 bars</ToggleButton>
                     <ToggleButton variant="outline-light" value={8}>8 bars</ToggleButton>
                 </ToggleButtonGroup>
+                </div>
                 <br></br>
                 <br></br>
                 
