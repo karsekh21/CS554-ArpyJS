@@ -187,7 +187,7 @@ class KeyComponent extends React.Component {
                 <div className="download">
                 <InputGroup>
                     <InputGroup.Prepend>
-                    <Button variant="outline-warning" onClick={this.compileItAll}>Download MIDI</Button>
+                    <Button variant="outline-warning" onClick={this.compileItAll}>Upload MIDI</Button>
                     </InputGroup.Prepend>
                     <FormControl aria-describedby="basic-addon1" placeholder='Name your file!' ref={this.textInput} type="text"/>
                 </InputGroup>

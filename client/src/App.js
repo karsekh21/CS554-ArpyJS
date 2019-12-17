@@ -14,14 +14,19 @@ class App extends React.Component {
     this.state = {
       showHome: true,
       showKeys: false,
-      data: null
+      data: null,
+      fileNames: null
     };
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount(){
     this.callBackendAPI()
       .then(res => this.setState({ data: res.express }))
       .catch(err => console.log(err));
+    
+    this.callBackendAPI2()
+      .then(res => this.setState({ fileNames: res.express }))
   }
 
   callBackendAPI = async () => {
@@ -33,6 +38,17 @@ class App extends React.Component {
     }
     return body;
   };
+
+  callBackendAPI2 = async () => {
+    const res = await fetch('http://localhost:5000/files');
+    const body = await res.json();
+
+    if (res.status !== 200) {
+      throw Error(body.message)
+    }
+    return body;
+  };
+
 
   homePage = () => {
     this.setState({
@@ -48,7 +64,24 @@ class App extends React.Component {
     });
   }
 
+  handleClick(val) {
+    fetch('http://localhost:5000/file/:' + val)
+  }
+
   render () {
+      let dropdown;
+      
+      if (this.state.fileNames != null) {
+        dropdown = <NavDropdown title="Uploaded Files" id="basic-nav-dropdown">
+                      {this.state.fileNames.map(file => <NavDropdown.Item value={file._id} onClick={this.handleClick}>{file.originalname}</NavDropdown.Item>)}
+                    </NavDropdown>
+      }
+      else {
+        dropdown = <div> no recent files </div>
+      }
+
+      
+
     return (
     <div className="App">
       {/* <NavbarComponent /> */}
@@ -60,13 +93,7 @@ class App extends React.Component {
               <Nav className="mr-auto">
               <Nav.Link onClick={this.homePage}>Home</Nav.Link>
               <Nav.Link onClick={this.keysAndScales}>Arpeggiator</Nav.Link>
-              <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                  <NavDropdown.Item href="#action/3.1">Options</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.2">Save Session</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.3">Load Last Session</NavDropdown.Item>
-                  <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action/3.4">Documentation</NavDropdown.Item>
-              </NavDropdown>
+              {dropdown}
               </Nav>
           </Navbar.Collapse>
           </Navbar>
