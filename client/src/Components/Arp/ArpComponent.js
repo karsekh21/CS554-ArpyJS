@@ -5,7 +5,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
-
+import './arp.css';
 class ArpComponent extends React.Component {
 
     constructor(props) {
@@ -23,7 +23,7 @@ class ArpComponent extends React.Component {
         this.props.orderChange(val);
 
         if (this.props.arp_length === 2) {
-            if (this.props.arp_order.length > 4 || this.props.arp_order.length === 0) {
+            if (val.length > 4 || val.length === 0) {
                 this.setState({
                     placeholder: 'Arp is improper length'
                 })
@@ -35,7 +35,7 @@ class ArpComponent extends React.Component {
             }
         }
         else if (this.props.arp_length === 4) {
-            if (this.props.arp_order.length > 9 || this.props.arp_order.length === 0) {
+            if (val.length > 9 || val.length === 0) {
                 this.setState({
                     placeholder: 'Arp is improper length'
                 })
@@ -47,7 +47,7 @@ class ArpComponent extends React.Component {
             }
         }  
         else if (this.props.arp_length === 8) {
-            if (this.props.arp_order.length > 21 || this.props.arp_order.length === 0) {
+            if (val.length > 21 || val.length === 0) {
                 this.setState({
                     placeholder: 'Arp is improper length'
                 })
@@ -69,11 +69,13 @@ class ArpComponent extends React.Component {
             <>
             <Container>
                 <div className="title">Arp Length: </div>
+                <div className='arp'>
                 <ToggleButtonGroup type="radio" name="bar-length" onChange={this.props.lengthChange}>
                     <ToggleButton variant="outline-light" value={2}>2 bars</ToggleButton>
                     <ToggleButton variant="outline-light" value={4}>4 bars</ToggleButton>
                     <ToggleButton variant="outline-light" value={8}>8 bars</ToggleButton>
                 </ToggleButtonGroup>
+                </div>
                 <br></br>
                 <br></br>
                 

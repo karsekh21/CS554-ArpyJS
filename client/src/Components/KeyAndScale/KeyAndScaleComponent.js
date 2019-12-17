@@ -15,6 +15,7 @@ class KeyAndScaleComponent extends React.Component {
             <div className="keyAndScale">
                 <Container>
                     <div className="title">Key: </div>
+                    <div className='button'>
                     <ToggleButtonGroup type="radio" name="key" onChange={this.props.keyChange}>
                         <ToggleButton variant="outline-light" value={'C4'}>C</ToggleButton>
                         <ToggleButton variant="outline-light" value={'F4'}>F</ToggleButton>
@@ -29,6 +30,7 @@ class KeyAndScaleComponent extends React.Component {
                         <ToggleButton variant="outline-light" value={'D4'}>D</ToggleButton>
                         <ToggleButton variant="outline-light" value={'G4'}>G</ToggleButton>
                     </ToggleButtonGroup>
+                    </div>
                 </Container>
                 <br></br>
                 <Container>
